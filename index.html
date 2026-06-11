@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PixelRush — Coding Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- SCREEN 1: DASHBOARD -->
+  <div class="screen" id="dashboard">
+    <div class="container">
+      <div class="header">
+        <h1>Pixel<span>Rush</span> ⚡</h1>
+        <p>Test your coding knowledge!</p>
+      </div>
+
+      <!-- LANGUAGE SELECTION -->
+      <div class="section-title">Choose Language</div>
+      <div class="lang-cards">
+        <div class="lang-card" onclick="selectLang('html')">
+          <div class="lang-icon">🌐</div>
+          <div class="lang-name">HTML</div>
+        </div>
+        <div class="lang-card" onclick="selectLang('css')">
+          <div class="lang-icon">🎨</div>
+          <div class="lang-name">CSS</div>
+        </div>
+        <div class="lang-card" onclick="selectLang('python')">
+          <div class="lang-icon">🐍</div>
+          <div class="lang-name">Python</div>
+        </div>
+      </div>
+
+      <!-- LEVEL SELECTION -->
+      <div class="section-title">Choose Level</div>
+      <div class="level-cards">
+        <div class="level-card easy" onclick="selectLevel('easy')">
+          <div class="level-icon">🌱</div>
+          <div class="level-name">Easy</div>
+        </div>
+        <div class="level-card medium" onclick="selectLevel('medium')">
+          <div class="level-icon">⚡</div>
+          <div class="level-name">Medium</div>
+        </div>
+        <div class="level-card hard" onclick="selectLevel('hard')">
+          <div class="level-icon">🔥</div>
+          <div class="level-name">Hard</div>
+        </div>
+      </div>
+
+      <!-- QUESTION COUNT -->
+      <div class="section-title">How many questions?</div>
+      <div class="count-options">
+        <button class="count-btn" onclick="selectCount(10)">10</button>
+        <button class="count-btn" onclick="selectCount(20)">20</button>
+        <button class="count-btn" onclick="selectCount(30)">30</button>
+      </div>
+
+      <!-- START BUTTON -->
+      <button class="start-btn" onclick="startQuiz()">Start Quiz 🚀</button>
+      <div id="dashboard-error" class="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: QUIZ -->
+  <div class="screen hidden" id="quiz-screen">
+    <div class="container">
+      <div class="quiz-header">
+        <div class="quiz-info">
+          <span id="lang-badge">HTML</span>
+          <span id="level-badge">Easy</span>
+        </div>
+        <div class="progress-text">
+          Question <span id="current-q">1</span> of <span id="total-q">10</span>
+        </div>
+      </div>
+
+      <!-- PROGRESS BAR -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <!-- QUESTION -->
+      <div class="question-card">
+        <div class="question-text" id="question-text">Question goes here</div>
+        <div class="options" id="options-container"></div>
+      </div>
+
+      <!-- NEXT BUTTON -->
+      <button class="next-btn hidden" id="next-btn" onclick="nextQuestion()">Next →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: RESULT -->
+  <div class="screen hidden" id="result-screen">
+    <div class="container">
+      <div class="result-card">
+        <div class="result-emoji" id="result-emoji">🏆</div>
+        <div class="result-title" id="result-title">Excellent!</div>
+        <div class="result-quote" id="result-quote"></div>
+
+        <!-- SCORE BAR -->
+        <div class="score-section">
+          <div class="score-text">
+            Your Score: <span id="score-display">0</span>/<span id="total-display">10</span>
+          </div>
+          <div class="score-bar">
+            <div class="score-fill" id="score-fill"></div>
+          </div>
+          <div class="score-percent" id="score-percent">0%</div>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats">
+          <div class="stat correct">
+            <div class="stat-num" id="correct-count">0</div>
+            <div class="stat-label">✅ Correct</div>
+          </div>
+          <div class="stat wrong">
+            <div class="stat-num" id="wrong-count">0</div>
+            <div class="stat-label">❌ Wrong</div>
+          </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="result-btns">
+          <button class="try-btn" onclick="tryAgain()">Try Again 🔄</button>
+          <button class="home-btn" onclick="goHome()">Dashboard 🏠</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
